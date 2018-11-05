@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 const isRunningInHeroku = (process.env.NODE && (process.env.NODE.indexOf("heroku") !== -1));
-const url = "http://localhost:8080/api/saved-articles";
+const url = isRunningInHeroku ? "https://nyt-news-scraper-react-bmf.herokuapp.com/api/saved-articles" : "http://localhost:8080/api/saved-articles";
 
 class ArticleCard extends Component{
     constructor(props){

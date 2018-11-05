@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ArticleCard from './ArticleCard.js';
 
 const isRunningInHeroku = (process.env.NODE && (process.env.NODE.indexOf("heroku") !== -1));
-const url = "http://localhost:8080/api/articles";
+const url = isRunningInHeroku ? "https://nyt-news-scraper-react-bmf.herokuapp.com/api/articles" : "http://localhost:8080/api/articles";
 
 function renderCard(article, articleChangedCb){
     let articleId = article._articleId;
