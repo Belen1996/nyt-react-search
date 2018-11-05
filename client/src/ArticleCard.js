@@ -11,7 +11,7 @@ class ArticleCard extends Component{
             headline: props.headline,
             description: props.description,
             originalArticle: props.originalArticle
-        }
+        };
 
         this.articleChangedCb = props.articleChangedCb;
     }
@@ -26,12 +26,12 @@ class ArticleCard extends Component{
                     body: JSON.stringify({
                         articleId: this.state.articleId
                         })
-                   }).then(a => this.articleChangedCb());
+                   }).then(() => this.articleChangedCb());
     }
 
     render(){
         return(
-        <div id={"article-" + this.state.articleId}>
+        <div key={this.state.articleId} id={"article-" + this.state.articleId}>
                 <div data-id={this.state.articleId} className="card">
                     <div className="card-header">
                         <h3>

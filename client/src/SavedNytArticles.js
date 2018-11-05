@@ -10,7 +10,7 @@ function renderCard(article, articleChangedCb){
     let description = article._description;
     let original_article = article._original_article;
 
-    return(<SavedArticleCard articleId={articleId} headline={headline} description={description} originalArticle={original_article} articleChangedCb={articleChangedCb}/>);
+    return(<SavedArticleCard key={articleId} articleId={articleId} headline={headline} description={description} originalArticle={original_article} articleChangedCb={articleChangedCb}/>);
 }
 
 class SavedNytArticles extends Component {
@@ -42,7 +42,7 @@ class SavedNytArticles extends Component {
     
     
         <div id="articles" className="container-fluid article-container">
-            {this.state.articles.map(a => renderCard(a))}
+            {this.state.articles.map(a => renderCard(a, this.refreshArticles))}
         </div>
     </div>);
     }

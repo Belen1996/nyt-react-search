@@ -10,7 +10,7 @@ function renderCard(article, articleChangedCb){
     let description = article._description;
     let original_article = article._original_article;
 
-    return(<ArticleCard articleId={articleId} headline={headline} description={description} originalArticle={original_article} articleChangedCb={articleChangedCb}/>);
+    return(<ArticleCard key={articleId} articleId={articleId} headline={headline} description={description} originalArticle={original_article} articleChangedCb={articleChangedCb}/>);
 }
 
 class NytArticles extends Component {
