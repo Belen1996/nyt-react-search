@@ -38,11 +38,11 @@ class SavedNytArticles extends Component {
 
     render(){
         return(<div className="container">
-        <h1>Latest news!</h1>
+        <h1>Saved news</h1>
     
     
         <div id="articles" className="container-fluid article-container">
-            {this.state.articles.map(a => renderCard(a, this.refreshArticles))}
+            {this.state.articles.length === 0 ? <span>No saved news</span> : this.state.articles.map(a => renderCard(a, this.refreshArticles))}
         </div>
     </div>);
     }

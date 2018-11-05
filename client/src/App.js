@@ -48,13 +48,13 @@ class App extends Component {
                     </div>
                     <div className="caption">
                         <h1>Belen's News Scraper</h1>
-                        <p>The Guardian US Edition</p>
+                        <p>The New York Times Edition</p>
                     </div>
                 </div>
                 { this.state.savedNews ? <SavedNytArticles/> : <NytArticles/> }
                 <footer className="footer">
                     <div className="container">
-                        <p>Belen's The Guardian US Edition News Scraper</p>
+                        <p>Belen's The New York Times Edition News Scraper</p>
                     </div>
                 </footer>
 

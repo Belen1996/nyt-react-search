@@ -42,7 +42,7 @@ class NytArticles extends Component {
     
     
         <div id="articles" className="container-fluid article-container">
-            {this.state.articles.map(a => renderCard(a, this.refreshArticles))}
+            {this.state.articles.length === 0 ? <span>No news available</span> : this.state.articles.map(a => renderCard(a, this.refreshArticles))}
         </div>
     </div>);
     }

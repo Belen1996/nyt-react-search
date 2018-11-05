@@ -1,23 +1,19 @@
-var express = require("express");
+const express = require("express");
+const path = require('path');
 
-var router = express.Router();
+const router = express.Router();
 
-var news_scraper_service = require("../services/news-scraper-service.js");
+const news_scraper_service = require("../services/news-scraper-service.js");
 
 const Article = require("../model/article.js");
 
 router.get("/", function(req, res) {
-    news_scraper_service.scrapeArticlesFromSource(function(articles) {
-        var hbsObject = {
-            articles: articles
-        };
-        res.render("index", hbsObject);
-    });
+    res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
 });
 
 router.get("/api/articles", function(req, res) {
     news_scraper_service.scrapeArticlesFromSource(function(articles) {
-        var articleObject = {
+        const articleObject = {
             articles: articles
         };
         res.send(articleObject);
@@ -39,7 +35,7 @@ router.post("/api/saved-articles", function(req, res) {
 
 router.get("/api/saved-articles", function(req, res) {
     news_scraper_service.getSavedArticles(function(savedArticles) {
-        var savedArticlesObject = {
+        const savedArticlesObject = {
             savedArticles: savedArticles
         };
         res.send(savedArticlesObject);

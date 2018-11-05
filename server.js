@@ -1,11 +1,13 @@
-var express = require ("express");
-var bodyParser = require ("body-parser");
+const express = require ("express");
+const bodyParser = require ("body-parser");
+const path = require('path');
 
-var PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 8080;
 
-var app = express();
+const app = express();
 
-app.use(express.static("public"));
+app.use(express.static(__dirname));
+app.use(express.static(path.join(__dirname, 'client/build')));
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -18,11 +20,10 @@ app.use(function(req, res, next) {
   next();
 });
 
-var routes = require("./controllers/news-scraper.js");
+const routes = require("./controllers/news-scraper.js");
 
 app.use(routes);
 
 app.listen(PORT, function() {
-
   console.log("Server listening on: http://localhost:" + PORT);
 });
