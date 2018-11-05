@@ -114,27 +114,34 @@ function clearDisplayedArticles() {
 
 function removeSavedArticle(id, cb) {
     if(id) {
+        console.log("trying to remove " + id);
         SavedArticleModel.findOne({articleId: id}, function(saError, savedArticleDoc) {
             if(!saError) {
                 let savedArticle = savedArticleDoc.toObject({getters : true});
+                console.log("id found: " + JSON.stringify(savedArticle));
                 var articleToSave = new ArticleModel({
                     articleId: savedArticle.articleId,
                     headline: savedArticle.headline,
                     description: savedArticle.description,
                     original_article: savedArticle.original_article});
                 articleToSave.save(function(amError) {
+                    console.log("Trying to save article back to displayed");
                     if(!amError) {
+                        console.log("Article successfully removed");
                         SavedArticleModel.remove({articleId: id}, function(error) {});
                         cb(true);
                     } else {
+                        console.log("Error while trying to save article");
                         cb(false);
                     }
                 });
             } else {
+                console.log("Error while trying to find article ");
                 cb(false);
             }
         });
     } else {
+        console.log("invalid id");
         cb(false);
     }
 }
